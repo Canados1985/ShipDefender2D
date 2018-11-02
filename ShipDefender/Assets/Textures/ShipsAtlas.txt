@@ -2,57 +2,92 @@
   <image>
     <name>motherShip</name>
     <x>0</x>
-    <y>266</y>
+    <y>366</y>
 	<w>470</w>
-	<h>479</h>
+	<h>480</h>
+  </image>
+    <image>
+    <name>harvester</name>
+    <x>1064</x>
+    <y>352</y>
+	<w>172</w>
+	<h>280</h>
   </image>
   <image>
     <name>scout</name>
     <x>0</x>
-    <y>0</y>
+    <y>100</y>
 	<w>237</w>
 	<h>234</h>
   </image>
 <image>
     <name>ranger</name>
     <x>242</x>
-    <y>0</y>
+    <y>100</y>
 	<w>244</w>
 	<h>238</h>
 	</image>
 <image>
     <name>corsair</name>
-    <x>491</x>
-    <y>0</y>
-	<w>240</w>
-	<h>237</h>
-	</image>
-	<image>
-    <name>destroyer</name>
     <x>738</x>
-    <y>0</y>
+    <y>100</y>
 	<w>239</w>
 	<h>237</h>
 	</image>
 	<image>
+    <name>destroyer</name>
+    <x>998</x>
+    <y>97</y>
+	<w>305</w>
+	<h>247</h>
+	</image>
+	<image>
     <name>ufo1</name>
     <x>492</x>
-    <y>265</y>
+    <y>365</y>
 	<w>241</w>
 	<h>260</h>
 	</image>
 	<image>
 	    <name>ufo2</name>
     <x>505</x>
-    <y>540</y>
+    <y>640</y>
 	<w>228</w>
 	<h>233</h>
 	</image>
 		<image>
 	    <name>ufo3</name>
     <x>767</x>
-    <y>263</y>
+    <y>363</y>
 	<w>244</w>
 	<h>257</h>
+	</image>
+	<image>
+	    <name>redPlanet</name>
+    <x>890</x>
+    <y>918</y>
+	<w>464</w>
+	<h>471</h>
+	</image>
+		<image>
+	    <name>greenPlanet</name>
+    <x>5</x>
+    <y>939</y>
+	<w>433</w>
+	<h>437</h>
+	</image>
+	<image>
+	    <name>grayPlanet</name>
+    <x>438</x>
+    <y>930</y>
+	<w>455</w>
+	<h>452</h>
+	</image>
+		<image>
+	    <name>blackPlanet</name>
+    <x>765</x>
+    <y>619</y>
+	<w>303</w>
+	<h>302</h>
 	</image>
 </atlas>

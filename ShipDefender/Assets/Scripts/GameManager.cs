@@ -6,33 +6,30 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager cl_GameManager;
 
+    public GameObject HarvesterButton; // UI button
+
     public GameObject mainStationInst;
 
-    public GameObject bulletInst;
-    public GameObject missleInst;
     public GameObject missleSeekerInst;
 
+    public GameObject harvesterInst;
     public GameObject scoutInst;
     public GameObject rangerInst;
     public GameObject corsairInst;
     public GameObject destroyerInst;
 
-    public GameObject ufo1Inst;
-    public GameObject ufo2Inst;
-    public GameObject ufo3Inst;
 
     [HideInInspector]
-    public List<GameObject> go_bulletList;
-    private GameObject bulletContainer;
 
-    public List<GameObject> go_missleList;
-    private GameObject missleContainer;
 
     public List<GameObject> go_missleSeekerList;
     private GameObject missleSeekerContainer;
 
     public List<GameObject> go_UFObulletList;
     private GameObject UFObulletContainer;
+
+    public List<GameObject> go_HarvesterList;
+    private GameObject harvesterContainer;
 
     public List<GameObject> go_ScoutList;
     private GameObject scoutContainer;
@@ -46,43 +43,16 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> go_DestroyerList;
     private GameObject destroyerContainer;
 
-    public List<GameObject> go_UFO1_List;
-    public List<GameObject> go_UFO2_List;
-    public List<GameObject> go_UFO3_List;
-    private GameObject enemyContainer;
-
-
-
 
     void Start ()
     {
         cl_GameManager = this;
 
         mainStationInst.GetComponent<MainStation>();
+        
 
-        //Bullets list
-        go_bulletList = new List<GameObject>();
-        bulletContainer = GameObject.Find("BulletContainer");
-        for (int i = 0; i < 50; i++)
-        {
-            GameObject temp = Instantiate(bulletInst);
-            temp.SetActive(false);
-            go_bulletList.Add(temp);
-            go_bulletList[i].transform.parent = bulletContainer.transform;
-            go_bulletList[i].name = "bullet";
-        }
+        FindObjectOfType<AudioManager>().Play("mainTheme");
 
-        //Missle list
-        go_missleList = new List<GameObject>();
-        missleContainer = GameObject.Find("MissleContainer");
-        for (int i = 0; i < 50; i++)
-        {
-            GameObject temp = Instantiate(missleInst);
-            temp.SetActive(false);
-            go_missleList.Add(temp);
-            go_missleList[i].transform.parent = missleContainer.transform;
-            go_missleList[i].name = "missle";
-        }
 
         //MissleSeeker list
         go_missleSeekerList = new List<GameObject>();
@@ -96,46 +66,68 @@ public class GameManager : MonoBehaviour {
             go_missleSeekerList[i].name = "missleSeeker";
         }
 
+        //Harvester List
+        go_HarvesterList = new List<GameObject>();
+        harvesterContainer = GameObject.Find("HarvesterList");
+        for (int i = 0; i < 4; i++)
+        {
+            GameObject temp = Instantiate(harvesterInst);
+            temp.SetActive(false);
+            go_HarvesterList.Add(temp);
+            go_HarvesterList[i].transform.parent = harvesterContainer.transform;
+            go_HarvesterList[i].name = "harvester";
+            if (i == 0) { go_HarvesterList[i].name = "harvester" + "1"; }
+            if (i == 1) { go_HarvesterList[i].name = "harvester" + "2"; }
+            if (i == 2) { go_HarvesterList[i].name = "harvester" + "3"; }
+            if (i == 3) { go_HarvesterList[i].name = "harvester" + "4"; }
+        }
+
         //Scouts List
         go_ScoutList = new List<GameObject>();
         scoutContainer = GameObject.Find("ScoutContainer");
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 4; i++)
         {
             GameObject temp = Instantiate(scoutInst);
             temp.SetActive(false);
             go_ScoutList.Add(temp);
             go_ScoutList[i].transform.parent = scoutContainer.transform;
-            go_ScoutList[i].name = "scout";
+            if (i == 0) { go_ScoutList[i].name = "scout" + "1"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "1"; }
+            if (i == 1) { go_ScoutList[i].name = "scout" + "2"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "2"; }
+            if (i == 2) { go_ScoutList[i].name = "scout" + "3"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "3"; }
+            if (i == 3) { go_ScoutList[i].name = "scout" + "4"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "4"; }
         }
 
         //Rangers List
         go_RangerList = new List<GameObject>();
         rangerContainer = GameObject.Find("RangerContainer");
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 3; i++)
         {
             GameObject temp = Instantiate(rangerInst);
             temp.SetActive(false);
             go_RangerList.Add(temp);
             go_RangerList[i].transform.parent = rangerContainer.transform;
-            go_RangerList[i].name = "ranger";
+            if (i == 0) { go_RangerList[i].name = "ranger" + "1"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "1"; }
+            if (i == 1) { go_RangerList[i].name = "ranger" + "2"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "2"; }
+            if (i == 2) { go_RangerList[i].name = "ranger" + "3"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "3"; }
         }
 
         //Corsair List
         go_CorsairList = new List<GameObject>();
         corsairContainer = GameObject.Find("CorsairContainer");
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 2; i++)
         {
             GameObject temp = Instantiate(corsairInst);
             temp.SetActive(false);
             go_CorsairList.Add(temp);
             go_CorsairList[i].transform.parent = corsairContainer.transform;
-            go_CorsairList[i].name = "corsair";
+            if (i == 0) { go_CorsairList[i].name = "corsair" + "1"; }
+            if (i == 1) { go_CorsairList[i].name = "corsair" + "2"; ; }
         }
 
         //Destroyer List
         go_DestroyerList = new List<GameObject>();
         destroyerContainer = GameObject.Find("DestroyerContainer");
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
             GameObject temp = Instantiate(destroyerInst);
             temp.SetActive(false);
@@ -144,55 +136,57 @@ public class GameManager : MonoBehaviour {
             go_DestroyerList[i].name = "destroyer";
         }
 
-        //UFO1 List
-        go_UFO1_List = new List<GameObject>();
-        enemyContainer = GameObject.Find("EnemyContainer");
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject temp = Instantiate(ufo1Inst);
-            temp.SetActive(false);
-            go_UFO1_List.Add(temp);
-            go_UFO1_List[i].transform.parent = enemyContainer.transform;
-            go_UFO1_List[i].name = "UFO_1";
-        }
-
-        //UFO2 List
-        go_UFO2_List = new List<GameObject>();
-        enemyContainer = GameObject.Find("EnemyContainer");
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject temp = Instantiate(ufo2Inst);
-            temp.SetActive(false);
-            go_UFO2_List.Add(temp);
-            go_UFO2_List[i].transform.parent = enemyContainer.transform;
-            go_UFO2_List[i].name = "UFO_2";
-        }
-        //UFO3 List
-        go_UFO3_List = new List<GameObject>();
-        enemyContainer = GameObject.Find("EnemyContainer");
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject temp = Instantiate(ufo3Inst);
-            temp.SetActive(false);
-            go_UFO3_List.Add(temp);
-            go_UFO3_List[i].transform.parent = enemyContainer.transform;
-            go_UFO3_List[i].name = "UFO_3";
-        }
-
 
     }
+
+
+    //Set Harvester active from list
+    public GameObject Harvester()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (!go_HarvesterList[i].activeInHierarchy)
+            {
+                go_HarvesterList[i].SetActive(true);
+                return go_HarvesterList[i];
+            }
+
+        }
+
+        GameObject temp = Instantiate(harvesterInst);
+        go_HarvesterList.Add(temp);
+        temp.SetActive(true);
+
+        return temp;
+
+    }
+
+    // Function for UI
+    public void CallHarvester()
+    {
+        if (MainStation.cl_MainStation.f_mainStationEnergy >= 5)
+        {
+            Harvester();
+            MainStation.cl_MainStation.HarvesterPrice();
+        }
+
+    }
+
+
+
 
     //Set Scout active from list
     public GameObject Scout() 
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (!go_ScoutList[i].activeInHierarchy)
             {
                 go_ScoutList[i].SetActive(true);
                 return go_ScoutList[i];
             }
-        }
+
+           }
 
         GameObject temp = Instantiate(scoutInst);
         go_ScoutList.Add(temp);
@@ -215,7 +209,7 @@ public class GameManager : MonoBehaviour {
     //Set Ranger active from list
     public GameObject Ranger()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (!go_RangerList[i].activeInHierarchy)
             {
@@ -317,86 +311,15 @@ public class GameManager : MonoBehaviour {
 
 
 
-    //Set UFO1 active from list
-    public GameObject callUFO1()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            if (!go_UFO1_List[i].activeInHierarchy)
-            {
-                go_UFO1_List[i].SetActive(true);
-                return go_UFO1_List[i];
-            }
-        }
-
-        GameObject temp = Instantiate(ufo1Inst);
-        go_UFO1_List.Add(temp);
-        temp.SetActive(true);
-        return temp;
-    }
-    //Set UFO2 active from list
-    public GameObject callUFO2()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            if (!go_UFO2_List[i].activeInHierarchy)
-            {
-                go_UFO2_List[i].SetActive(true);
-                return go_UFO2_List[i];
-            }
-        }
-
-        GameObject temp = Instantiate(ufo2Inst);
-        go_UFO2_List.Add(temp);
-        temp.SetActive(true);
-        return temp;
-    }
-    //Set UFO2 active from list
-    public GameObject callUFO3()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            if (!go_UFO3_List[i].activeInHierarchy)
-            {
-                go_UFO3_List[i].SetActive(true);
-                return go_UFO3_List[i];
-            }
-        }
-
-        GameObject temp = Instantiate(ufo3Inst);
-        go_UFO3_List.Add(temp);
-        temp.SetActive(true);
-        return temp;
-    }
-
-    //Set Missle Active from list
-    public GameObject LaunchMissle()
-    {
-        for (int i = 0; i < 50; i++)
-        {
-            if (!go_missleList[i].activeInHierarchy)
-            {
-                go_missleList[i].SetActive(true);
-                return go_missleList[i];
-            }
-        }
-
-        GameObject temp = Instantiate(missleInst);
-        go_missleList.Add(temp);
-        temp.SetActive(true);
-        return temp;
-    }
 
 
 
     private void Update()
     {
-
+        //Debug.Log(go_HarvesterList.Count);
 
 
     }
-
-
 
     private void FixedUpdate()
     {

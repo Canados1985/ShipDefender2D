@@ -12,6 +12,7 @@ public class MainStation : MonoBehaviour {
     public GameObject go_MainStationLevel3;
     public Transform MainStationTransform;
 
+    public GameObject go_cursor;
 
     private bool b_turnBack = false;
 
@@ -49,13 +50,20 @@ public class MainStation : MonoBehaviour {
 
     void Start () {
 
-       cl_MainStation = this;
+         cl_MainStation = this;
 
         go_MainStation = GameObject.Find("MainStation");
         MainStationTransform = go_MainStation.GetComponent<Transform>();
 
         go_MainStationLevel2.SetActive(false);
         go_MainStationLevel3.SetActive(false);
+        go_cursor.SetActive(false);
+    }
+
+    public void HarvesterPrice()
+    {
+        f_mainStationEnergy = f_mainStationEnergy - 5;
+
     }
 
 
@@ -105,6 +113,22 @@ public class MainStation : MonoBehaviour {
 
     }
 
+
+ /*   private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "ASTEROID")
+        {
+            f_mainStationHealth = f_mainStationHealth - 15f;
+            Asteroid_1.cl_Asteroid1.DestroyAsteroid();
+
+        }
+        if (other.gameObject.tag == "ASTEROID2")
+        {
+            f_mainStationHealth = f_mainStationHealth - 15f;
+            Asteroid_2.cl_Asteroid2.DestroyAsteroid();
+        }
+    }
+*/
 
 
     private void Update()
@@ -169,12 +193,6 @@ public class MainStation : MonoBehaviour {
 
 
 
-
-
-
-
-
-
         if (!b_baseLevel2Update && !b_baseLevel3Update)
         {
 
@@ -229,19 +247,19 @@ public class MainStation : MonoBehaviour {
         }
 
 
-        Debug.Log(f_mainStationEnergy);
+        //Debug.Log(f_mainStationEnergy);
 
 
         stationHealth.text = f_mainStationHealth.ToString();
         stationEnergy.text = f_mainStationEnergy.ToString();
 
-        if (MainStationTransform.position.z > 5f)
+        if (MainStationTransform.position.y > 9.5f)
 
         {
             b_turnBack = true;
         }
 
-        if (MainStationTransform.position.z < -4.5f)
+        if (MainStationTransform.position.y < -10f)
 
         {
             b_turnBack = false;
@@ -249,19 +267,50 @@ public class MainStation : MonoBehaviour {
 
         if (b_turnBack)
         {
-            go_MainStation.transform.Rotate(new Vector3(0, -0.015f, 0), Space.World);
-            go_MainStation.transform.Translate(new Vector3(0, 0, -0.00055f));
+            go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+            go_MainStation.transform.Translate(new Vector3(0, -0.00055f, 0));
 
             //Debug.Log(MainStationTransform.position.z);
         }
         if (!b_turnBack)
         {
-            go_MainStation.transform.Rotate(new Vector3(0, -0.015f, 0), Space.World);
-            go_MainStation.transform.Translate(new Vector3(0, 0, 0.00055f));
+            go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+            go_MainStation.transform.Translate(new Vector3(0, 0.00055f, 0));
 
             //Debug.Log(MainStationTransform.position.z);
         }
 
 
-    }
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            RaycastHit hit;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, 10000.0f))
+            {
+
+                if (hit.transform != null)
+                {
+                    if (hit.transform.gameObject.name == "MainStation")
+                    {
+                        
+                        PanelUserControl.cl_PanelUserControl.SetPanelActive();
+                        go_cursor.SetActive(true);
+                    }
+
+                }
+
+
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            PanelUserControl.cl_PanelUserControl.SetPanelNotActive();
+            go_cursor.SetActive(false);
+        }
+
+
+        }
 }

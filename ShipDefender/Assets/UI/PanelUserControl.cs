@@ -11,6 +11,7 @@ public class PanelUserControl : MonoBehaviour {
 
     public GameObject mainShipInst;
 
+    public GameObject go_HarvesterButton;
     public GameObject go_ScoutButton;
     public GameObject go_RangerButton;
     public GameObject go_CorsairButton;
@@ -29,6 +30,7 @@ public class PanelUserControl : MonoBehaviour {
 
         cl_PanelUserControl = this;
 
+        go_HarvesterButton.SetActive(false);
         go_ScoutButton.SetActive(false);
         go_RangerButton.SetActive(false);
         go_CorsairButton.SetActive(false);
@@ -40,11 +42,29 @@ public class PanelUserControl : MonoBehaviour {
         go_LevelUp3.SetActive(false);
         go_TexttLevelUp3.SetActive(false);
     }
-	
-	
-	void Update () {
 
 
+
+    public void SetPanelActive()
+    {
+        go_PanelUserControl.SetActive(true);
+    }
+
+    public void SetPanelNotActive()
+    {
+        go_PanelUserControl.SetActive(false);
+    }
+
+    void Update () {
+
+        if (MainStation.cl_MainStation.f_mainStationEnergy >= 5)
+        {
+            go_HarvesterButton.SetActive(true);
+        }
+        if (MainStation.cl_MainStation.f_mainStationEnergy < 5)
+        {
+            go_HarvesterButton.SetActive(false);
+        }
         if (MainStation.cl_MainStation.f_mainStationEnergy >=15)
         {
             go_ScoutButton.SetActive(true);

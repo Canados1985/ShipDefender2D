@@ -28,6 +28,17 @@ public class bg : MonoBehaviour {
     public GameObject go_mainCameraInst;
     public Transform mainCameraTransform;
 
+    public GameObject go_GreenPlanet;
+    public Transform greenPlanetTransform;
+
+    public GameObject go_RedPlanet;
+    public Transform redPlanetTransform;
+
+    public GameObject go_GreyPlanet;
+    public Transform greyPlanetTransform;
+
+    public GameObject go_BlackPlanet;
+    public Transform blackPlanetTransform;
    
 
     private bool b_newPosition = false;
@@ -53,6 +64,16 @@ public class bg : MonoBehaviour {
 
         go_mainCameraInst = GameObject.Find("MainCamera");
         mainCameraTransform = go_mainCameraInst.GetComponent<Transform>();
+
+        go_GreenPlanet = GameObject.Find("greenplanet");
+        greenPlanetTransform = go_GreenPlanet.GetComponent<Transform>();
+        go_RedPlanet = GameObject.Find("redplanet");
+        redPlanetTransform = go_GreenPlanet.GetComponent<Transform>();
+        go_BlackPlanet = GameObject.Find("blackplanet");
+        blackPlanetTransform = go_GreenPlanet.GetComponent<Transform>();
+        go_GreyPlanet = GameObject.Find("greyplanet");
+        greyPlanetTransform = go_GreenPlanet.GetComponent<Transform>();
+
     }
 
 
