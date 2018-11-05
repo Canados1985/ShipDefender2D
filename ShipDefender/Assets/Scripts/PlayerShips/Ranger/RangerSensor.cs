@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class RangerSensor : MonoBehaviour {
 
-    public static RangerSensor cl_RangerSensor;
-
-
     public bool b_colIsUFO1 = false;
     public bool b_colIsUFO2 = false;
     public bool b_colIsUFO3 = false;
@@ -14,73 +11,186 @@ public class RangerSensor : MonoBehaviour {
     public bool b_colIsAsteriod1 = false;
     public bool b_colIsAsteroid2 = false;
 
-    float f_counter = 5;
+    float f_counter = 8;
 
     void Start() {
 
-        cl_RangerSensor = this;
 
     }
 
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Ranger tempRenger = gameObject.transform.parent.GetComponent<Ranger>();
         if (collision.gameObject.name == "ufo1(Clone)" && b_colIsUFO2 == false && b_colIsUFO3 == false && b_colIsAsteriod1 == false && b_colIsAsteroid2 == false)
         {
-            Ranger.cl_Ranger.b_chasingUFO = true;
-            b_colIsUFO1 = true;
+
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO1 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO1 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO1 = true;
+
+            }
         }
         if (collision.gameObject.name == "ufo2(Clone)" && b_colIsUFO1 == false && b_colIsUFO3 == false && b_colIsAsteriod1 == false && b_colIsAsteroid2 == false)
         {
-            Ranger.cl_Ranger.b_chasingUFO = true;
-            b_colIsUFO2 = true;
+
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO2 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO2 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO2 = true;
+
+            }
         }
         if (collision.gameObject.name == "ufo3(Clone)" && b_colIsUFO1 == false && b_colIsUFO2 == false && b_colIsAsteriod1 == false && b_colIsAsteroid2 == false)
         {
-            Ranger.cl_Ranger.b_chasingUFO = true;
-            b_colIsUFO3 = true;
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo3TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO3 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo3TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO3 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                tempRenger.b_chasingUFO = true;
+                tempRenger.ufo3TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsUFO3 = true;
+
+
+            }
         }
 
         if (collision.gameObject.tag == "ASTEROID" && b_colIsUFO1 == false && b_colIsUFO2 == false && b_colIsUFO3 == false && b_colIsAsteroid2 == false)
         {
-            Ranger.cl_Ranger.b_chasingAsteroid = true;
-            b_colIsAsteriod1 = true;
-        }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
 
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteriod1 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
+
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteriod1 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid1TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteriod1 = true;
+
+            }
+        }
         if (collision.gameObject.tag == "ASTEROID2" && b_colIsUFO1 == false && b_colIsUFO2 == false && b_colIsUFO3 == false && b_colIsAsteriod1 == false)
         {
-            Ranger.cl_Ranger.b_chasingAsteroid = true;
-            b_colIsAsteroid2 = true;
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
+
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteroid2 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
+
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteroid2 = true;
+
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                tempRenger.b_chasingAsteroid = true;
+                tempRenger.asteroid2TransformTarget.position = collision.gameObject.transform.position;
+                b_colIsAsteroid2 = true;
+
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Ranger tempRenger = gameObject.transform.parent.GetComponent<Ranger>();
         if (collision.gameObject.name == "ufo1(Clone)")
         {
-            Ranger.cl_Ranger.b_chasingUFO = false;
+            tempRenger.b_chasingUFO = false;
             b_colIsUFO1 = false;
         }
         if (collision.gameObject.name == "ufo2(Clone)")
         {
-            Ranger.cl_Ranger.b_chasingUFO = false;
+            tempRenger.b_chasingUFO = false;
             b_colIsUFO2 = false;
         }
         if (collision.gameObject.name == "ufo3(Clone)")
         {
-            Ranger.cl_Ranger.b_chasingUFO = false;
+            tempRenger.b_chasingUFO = false;
             b_colIsUFO3 = false;
         }
 
         if (collision.gameObject.tag == "ASTEROID")
         {
-            Ranger.cl_Ranger.b_chasingAsteroid = false;
+            tempRenger.b_chasingAsteroid = false;
             b_colIsAsteriod1 = false;
         }
 
         if (collision.gameObject.tag == "ASTEROID2")
         {
-            Ranger.cl_Ranger.b_chasingAsteroid = false;
+            tempRenger.b_chasingAsteroid = false;
             b_colIsAsteroid2 = false;
         }
     }
@@ -95,16 +205,45 @@ public class RangerSensor : MonoBehaviour {
         }
         if (f_counter <= 0)
         {
-            Ranger.cl_Ranger.b_chasingUFO = false;
-            Ranger.cl_Ranger.b_chasingAsteroid = false;
 
-             b_colIsUFO1 = false;
-             b_colIsUFO2 = false;
-             b_colIsUFO3 = false;
-             b_colIsAsteriod1 = false;
-             b_colIsAsteroid2 = false;
+            Ranger tempRenger = gameObject.transform.parent.GetComponent<Ranger>();
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger1")
+            {
+                b_colIsUFO1 = false;
+                b_colIsUFO2 = false;
+                b_colIsUFO3 = false;
+                b_colIsAsteriod1 = false;
+                b_colIsAsteroid2 = false;
+                tempRenger.b_chasingUFO = false;
+                tempRenger.b_chasingAsteroid = false;
+                f_counter = 8;
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger2")
+            {
 
-    f_counter = 5;
+                b_colIsUFO1 = false;
+                b_colIsUFO2 = false;
+                b_colIsUFO3 = false;
+                b_colIsAsteriod1 = false;
+                b_colIsAsteroid2 = false;
+                f_counter = 8;
+                tempRenger.b_chasingUFO = false;
+                tempRenger.b_chasingAsteroid = false;
+            }
+            if (this.gameObject.GetComponentInParent<Ranger>().gameObject.name == "ranger3")
+            {
+
+                b_colIsUFO1 = false;
+                b_colIsUFO2 = false;
+                b_colIsUFO3 = false;
+                b_colIsAsteriod1 = false;
+                b_colIsAsteroid2 = false;
+                f_counter = 8;
+                tempRenger.b_chasingUFO = false;
+                tempRenger.b_chasingAsteroid = false;
+            }
+
+
         }
     }
 

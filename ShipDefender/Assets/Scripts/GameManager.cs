@@ -6,11 +6,13 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager cl_GameManager;
 
-    public GameObject HarvesterButton; // UI button
+    public GameObject GameStatesManagerInst;
+
+
+    // UI button --->
+    public GameObject HarvesterButton; 
 
     public GameObject mainStationInst;
-
-    public GameObject missleSeekerInst;
 
     public GameObject harvesterInst;
     public GameObject scoutInst;
@@ -20,13 +22,6 @@ public class GameManager : MonoBehaviour {
 
 
     [HideInInspector]
-
-
-    public List<GameObject> go_missleSeekerList;
-    private GameObject missleSeekerContainer;
-
-    public List<GameObject> go_UFObulletList;
-    private GameObject UFObulletContainer;
 
     public List<GameObject> go_HarvesterList;
     private GameObject harvesterContainer;
@@ -47,24 +42,26 @@ public class GameManager : MonoBehaviour {
     void Start ()
     {
         cl_GameManager = this;
+        PreloadGameObj();
+        GameStatesManagerInst = GameObject.Find("GameStateManager");
+
+       // GameStatesManagerInst.GetComponent<GameStateManager>().GameMenu(); // Normal Start With UI
+        GameStatesManagerInst.GetComponent<GameStateManager>().StartGame(); // developing start
+
+    }
+
+    //Start Game after Intro
+    public void StartGame()
+    {
+          GameStatesManagerInst.GetComponent<GameStateManager>().StartGame();
+    }
+
+    //Preload 
+    public void PreloadGameObj()
+    {
 
         mainStationInst.GetComponent<MainStation>();
-        
 
-        FindObjectOfType<AudioManager>().Play("mainTheme");
-
-
-        //MissleSeeker list
-        go_missleSeekerList = new List<GameObject>();
-        missleSeekerContainer = GameObject.Find("MissleSeekerContainer");
-        for (int i = 0; i < 50; i++)
-        {
-            GameObject temp = Instantiate(missleSeekerInst);
-            temp.SetActive(false);
-            go_missleSeekerList.Add(temp);
-            go_missleSeekerList[i].transform.parent = missleSeekerContainer.transform;
-            go_missleSeekerList[i].name = "missleSeeker";
-        }
 
         //Harvester List
         go_HarvesterList = new List<GameObject>();
@@ -91,6 +88,8 @@ public class GameManager : MonoBehaviour {
             temp.SetActive(false);
             go_ScoutList.Add(temp);
             go_ScoutList[i].transform.parent = scoutContainer.transform;
+            go_ScoutList[i].transform.parent.position = scoutContainer.transform.position;
+            go_ScoutList[i].transform.position = new Vector3(scoutContainer.transform.position.x, scoutContainer.transform.position.y, scoutContainer.transform.position.z - 5);
             if (i == 0) { go_ScoutList[i].name = "scout" + "1"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "1"; }
             if (i == 1) { go_ScoutList[i].name = "scout" + "2"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "2"; }
             if (i == 2) { go_ScoutList[i].name = "scout" + "3"; go_ScoutList[i].GetComponentInChildren<ScoutsColliders>().name = "scout" + "3"; }
@@ -106,6 +105,7 @@ public class GameManager : MonoBehaviour {
             temp.SetActive(false);
             go_RangerList.Add(temp);
             go_RangerList[i].transform.parent = rangerContainer.transform;
+            go_RangerList[i].transform.position = new Vector3(rangerContainer.transform.position.x, rangerContainer.transform.position.y, rangerContainer.transform.position.z - 5);
             if (i == 0) { go_RangerList[i].name = "ranger" + "1"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "1"; }
             if (i == 1) { go_RangerList[i].name = "ranger" + "2"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "2"; }
             if (i == 2) { go_RangerList[i].name = "ranger" + "3"; go_RangerList[i].GetComponentInChildren<RangersColliders>().name = "ranger" + "3"; }
@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviour {
             temp.SetActive(false);
             go_CorsairList.Add(temp);
             go_CorsairList[i].transform.parent = corsairContainer.transform;
+            go_CorsairList[i].transform.parent.position = corsairContainer.transform.position;
+            go_CorsairList[i].transform.position = new Vector3(corsairContainer.transform.position.x, corsairContainer.transform.position.y, corsairContainer.transform.position.z - 5);
             if (i == 0) { go_CorsairList[i].name = "corsair" + "1"; }
             if (i == 1) { go_CorsairList[i].name = "corsair" + "2"; ; }
         }
@@ -133,9 +135,10 @@ public class GameManager : MonoBehaviour {
             temp.SetActive(false);
             go_DestroyerList.Add(temp);
             go_DestroyerList[i].transform.parent = destroyerContainer.transform;
+            go_DestroyerList[i].transform.parent.position = destroyerContainer.transform.position;
+            go_DestroyerList[i].transform.position = new Vector3(destroyerContainer.transform.position.x, destroyerContainer.transform.position.y, destroyerContainer.transform.position.z - 5);
             go_DestroyerList[i].name = "destroyer";
         }
-
 
     }
 
@@ -311,20 +314,27 @@ public class GameManager : MonoBehaviour {
 
 
 
-
-
-
     private void Update()
     {
-        //Debug.Log(go_HarvesterList.Count);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+           
+            if (GameStateManager.cl_GameStateManager.b_IsGameIsPaused)
+            {
+                
+                GameStateManager.cl_GameStateManager.UnpausedGame();
+            }
+            else
+            {
+                GameStateManager.cl_GameStateManager.PauseGame();
+            }
+
+        }
 
 
     }
 
-    private void FixedUpdate()
-    {
-
-    }
 
 
 

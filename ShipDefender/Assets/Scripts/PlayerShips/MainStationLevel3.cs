@@ -7,6 +7,7 @@ public class MainStationLevel3 : MonoBehaviour {
 
     public GameObject go_MainStationLevel3;
 
+    public Transform mainstationLevel3Transform;
 
     void Start () {
 		
@@ -14,6 +15,10 @@ public class MainStationLevel3 : MonoBehaviour {
 	
 
 	void Update () {
-        go_MainStationLevel3.transform.Rotate(new Vector3(0, -0.025f, 0), Space.World);
+
+       // if()
+        go_MainStationLevel3.transform.Rotate(new Vector3(0, 0, 0.25f), Space.World);
+
+        //go_MainStationLevel3.transform.Rotate(new Vector3(0, 0, -0.5f), Space.World);
     }
 }

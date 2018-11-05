@@ -19,11 +19,12 @@ public class Plus15Energy : MonoBehaviour {
     private float f_counter = 3;
 
     void Start () {
+
         f_counter = 3;
         text = GetComponent<TextMesh>();
         color = text.GetComponent<TextMesh>().color;
-        Plus15EnergyTransform.position = Plus15EnergyTransform.position;
-        Plus15EnergyTransform.rotation = Plus15EnergyTransform.rotation;
+        //Plus15EnergyTransform.position = Plus15EnergyTransform.position;
+        //Plus15EnergyTransform.rotation = Plus15EnergyTransform.rotation;
     }
 
     private void FixedUpdate()
@@ -38,11 +39,14 @@ public class Plus15Energy : MonoBehaviour {
     }
 
 
-    void Update () {
+    void Update() {
 
         //Debug.Log(f_counter);
-
-        go_Plus15Energy.transform.Translate(new Vector3(0, 0.005f, 0));
+        if (GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
+        {
+            go_Plus15Energy.transform.Translate(new Vector3(0, 0.005f, 0));
+        }
+        
 
 
         if (f_counter <= 0)

@@ -24,6 +24,7 @@ public class MainStation : MonoBehaviour {
 
 
     public float f_mainStationEnergy = 30;
+    public float f_mainStationResource = 0;
     public float f_mainStationEnergyMaxLevel1 = 100;
     public float f_mainStationEnergyMaxLevel2 = 150;
     public float f_mainStationEnergyMaxLevel3 = 200;
@@ -33,6 +34,7 @@ public class MainStation : MonoBehaviour {
 
     public Text stationHealth;
     public Text stationEnergy;
+    public Text stationResource;
     public GameObject energyBAR;
     public GameObject healthBAR;
 
@@ -45,6 +47,7 @@ public class MainStation : MonoBehaviour {
 
         f_mainStationHealth = 1000;
         f_mainStationEnergy = 30;
+        f_mainStationResource = 0;
     }
 
 
@@ -90,7 +93,21 @@ public class MainStation : MonoBehaviour {
 
     public void RepairPrice()
     {
-        f_mainStationEnergy = f_mainStationEnergy - 50;
+        if (!b_baseLevel2Update && !b_baseLevel3Update)
+        {
+            f_mainStationEnergy = f_mainStationEnergy - 50;
+            f_mainStationHealth = 1000;
+        }
+        if (b_baseLevel2Update && !b_baseLevel3Update)
+        {
+            f_mainStationEnergy = f_mainStationEnergy - 100;
+            f_mainStationHealth = 1500;
+        }
+        if (b_baseLevel3Update)
+        {
+            f_mainStationEnergy = f_mainStationEnergy - 150;
+            f_mainStationHealth = 2000;
+        }
     }
 
     public void UpgradePrice()
@@ -114,41 +131,50 @@ public class MainStation : MonoBehaviour {
     }
 
 
- /*   private void OnTriggerEnter(Collider other)
+    /*   private void OnTriggerEnter(Collider other)
+       {
+           if (other.gameObject.tag == "ASTEROID")
+           {
+               f_mainStationHealth = f_mainStationHealth - 15f;
+               Asteroid_1.cl_Asteroid1.DestroyAsteroid();
+
+           }
+           if (other.gameObject.tag == "ASTEROID2")
+           {
+               f_mainStationHealth = f_mainStationHealth - 15f;
+               Asteroid_2.cl_Asteroid2.DestroyAsteroid();
+           }
+       }
+   */
+    private void FixedUpdate()
     {
-        if (other.gameObject.tag == "ASTEROID")
-        {
-            f_mainStationHealth = f_mainStationHealth - 15f;
-            Asteroid_1.cl_Asteroid1.DestroyAsteroid();
+        
+        f_mainStationEnergy += Time.deltaTime / 5;
 
-        }
-        if (other.gameObject.tag == "ASTEROID2")
-        {
-            f_mainStationHealth = f_mainStationHealth - 15f;
-            Asteroid_2.cl_Asteroid2.DestroyAsteroid();
-        }
     }
-*/
-
 
     private void Update()
     {
-
-        if (Input.GetKey(KeyCode.Space))
+        // Temporary Input
+        if (GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
-            f_mainStationHealth = f_mainStationHealth - 15;
-
-
+            if (Input.GetKey(KeyCode.Space))
+            {
+                f_mainStationHealth = f_mainStationHealth - 15;
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                f_mainStationEnergy = f_mainStationEnergy - 5;
+            }
+            if (Input.GetKey(KeyCode.E))
+            {
+                f_mainStationEnergy = f_mainStationEnergy + 5;
+            }
+            if (Input.GetKey(KeyCode.R))
+            {
+                f_mainStationResource = f_mainStationResource + 5;
+            }
         }
-        if (Input.GetKey(KeyCode.Q))
-        {
-            f_mainStationEnergy = f_mainStationEnergy - 5;
-        }
-        if (Input.GetKey(KeyCode.E))
-        {
-            f_mainStationEnergy = f_mainStationEnergy + 5;
-        }
-
 
 
 
@@ -238,50 +264,84 @@ public class MainStation : MonoBehaviour {
         if (f_mainStationHealth <= 0)
         {
             f_mainStationHealth = 0;
-            Debug.Log("GAME OVER");
+            GameStateManager.cl_GameStateManager.GameOver();
         }
         if (f_mainStationEnergy <= 0)
         {
             f_mainStationEnergy = 0;
             
         }
-
+        if (f_mainStationResource >= 2000)
+        {
+            GameStateManager.cl_GameStateManager.GameWin();
+        }
 
         //Debug.Log(f_mainStationEnergy);
 
 
         stationHealth.text = f_mainStationHealth.ToString();
-        stationEnergy.text = f_mainStationEnergy.ToString();
+        float temp = Mathf.Round(f_mainStationEnergy);
+        stationEnergy.text = temp.ToString();
+        stationResource.text = f_mainStationResource.ToString();
 
-        if (MainStationTransform.position.y > 9.5f)
+        if (MainStationTransform.position.y > 9.5f && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
 
         {
             b_turnBack = true;
         }
 
-        if (MainStationTransform.position.y < -10f)
+        if (MainStationTransform.position.y < -10f && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
 
         {
             b_turnBack = false;
         }
 
-        if (b_turnBack)
+        if (b_turnBack && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
-            go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
-            go_MainStation.transform.Translate(new Vector3(0, -0.00055f, 0));
+
+
+            if (!b_baseLevel2Update && !b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, -0.00055f, 0));
+            }
+            if (b_baseLevel2Update && !b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, -0.00155f, 0));
+            }
+            if (b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, -0.00255f, 0));
+            }
 
             //Debug.Log(MainStationTransform.position.z);
         }
-        if (!b_turnBack)
+        if (!b_turnBack && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
-            go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
-            go_MainStation.transform.Translate(new Vector3(0, 0.00055f, 0));
+
+            if (!b_baseLevel2Update && !b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, 0.00055f, 0));
+            }
+            if (b_baseLevel2Update && !b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, 0.00155f, 0));
+            }
+            if (b_baseLevel3Update)
+            {
+                go_MainStation.transform.Rotate(new Vector3(0, 0, -0.05f), Space.World);
+                go_MainStation.transform.Translate(new Vector3(0, 0.00255f, 0));
+            }
 
             //Debug.Log(MainStationTransform.position.z);
         }
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
 
             RaycastHit hit;

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Missle : MonoBehaviour {
 
-    public static Missle cl_Missle;
-
-	public GameObject go_Missle;
+   	public GameObject go_Missle;
     public GameObject go_Explosion;
+    public GameObject go_flame;
+
     public Rigidbody2D rb_Missle;
 
     public Transform explosionTransform;
@@ -15,14 +15,6 @@ public class Missle : MonoBehaviour {
     public Transform missleTransform;
     private Vector3 v3_missle;
 
-    public Transform missleContainerTransform;
-
-    public Transform rangerGun1Transform;
-    public Transform rangerGun2Transform;
-
-    public Transform ranger1Transform;
-    public Transform ranger2Transform;
-    public Transform ranger3Transform;
 
 
     private float f_speed = 50f;
@@ -30,47 +22,36 @@ public class Missle : MonoBehaviour {
 
     private float f_counter = 0.5f;
 
+    public float f_flameCounter = 0.5f;
+
 	void Start () {
 
-
-        cl_Missle = this;
-
-        missleContainerTransform = GameObject.Find("MissleContainer").transform;
-
-        if (this.gameObject.name == "missleR1")
-        {
-            ranger1Transform = GameObject.Find("ranger1").GetComponent<Transform>();
-        }
-        if (this.gameObject.name == "missleR2")
-        {
-            ranger2Transform = GameObject.Find("ranger2").GetComponent<Transform>();
-        }
-        if (this.gameObject.name == "missleR3")
-        {
-            ranger3Transform = GameObject.Find("ranger3").GetComponent<Transform>();
-        }
-        
-       
-
+        go_flame.SetActive(false);
+        f_flameCounter = 0.5f;
     }
+
 
 
     private void OnDisable()
     {
         if (this.gameObject.name == "missleR1")
         {
+
             go_Missle.SetActive(false);
-            missleTransform.position = ranger1Transform.position;
+            f_flameCounter = 0.5f;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
         }
         if (this.gameObject.name == "missleR2")
         {
             go_Missle.SetActive(false);
-            missleTransform.position = ranger2Transform.position;
+            f_flameCounter = 0.5f;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
         }
         if (this.gameObject.name == "missleR3")
         {
             go_Missle.SetActive(false);
-            missleTransform.position = ranger3Transform.position;
+            f_flameCounter = 0.5f;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
         }
     }
 
@@ -85,7 +66,7 @@ public class Missle : MonoBehaviour {
             Instantiate(go_Explosion, v3_missle, new Quaternion());
             explosionTransform.position = missleTransform.position;
             go_Missle.SetActive(false);
-            missleTransform.position = missleContainerTransform.position;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
         }
 
@@ -96,7 +77,7 @@ public class Missle : MonoBehaviour {
             explosionTransform.position = missleTransform.position;
             Instantiate(go_Explosion, v3_missle, new Quaternion());
             go_Missle.SetActive(false);
-            missleTransform.position = missleContainerTransform.position;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
         }
 
@@ -108,7 +89,7 @@ public class Missle : MonoBehaviour {
             explosionTransform.position = missleTransform.position;
             Instantiate(go_Explosion, v3_missle, new Quaternion());
             go_Missle.SetActive(false);
-            missleTransform.position = missleContainerTransform.position;
+            missleTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
         }
 
@@ -117,6 +98,9 @@ public class Missle : MonoBehaviour {
 
     private void FixedUpdate()
     {
+
+        if (go_Missle.activeSelf == true) { f_flameCounter -= Time.deltaTime; }
+        if (f_flameCounter <= 0) { go_flame.SetActive(true); f_flameCounter = 0.5f; }
 
         rb_Missle.AddForce(missleTransform.up * f_speed);
 

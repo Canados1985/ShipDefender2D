@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BulletScout : MonoBehaviour {
 
-    public static BulletScout cl_BulletScout;
-
     public GameObject go_BulletScout;
     public GameObject go_Explosion;
 
@@ -34,9 +32,6 @@ public class BulletScout : MonoBehaviour {
 
     void Start() {
 
-        cl_BulletScout = this;
-
-        bulletContainerTransform = GameObject.Find("BulletContainer").transform;
 
     }
 
@@ -66,7 +61,7 @@ public class BulletScout : MonoBehaviour {
             explosionTransform.position = collision.transform.position;
             
             go_BulletScout.SetActive(false);
-            bulletScoutTransform.position = bulletContainerTransform.position;
+            bulletScoutTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
         }
 
@@ -79,7 +74,7 @@ public class BulletScout : MonoBehaviour {
             explosionTransform.position = bulletScoutTransform.position;
             Instantiate(go_Explosion, v3_BulletScout, new Quaternion());
             go_BulletScout.SetActive(false);
-            bulletScoutTransform.position = bulletContainerTransform.position;
+            bulletScoutTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
 
         }
@@ -94,7 +89,7 @@ public class BulletScout : MonoBehaviour {
             explosionTransform.position = bulletScoutTransform.position;
             Instantiate(go_Explosion, v3_BulletScout, new Quaternion());
             go_BulletScout.SetActive(false);
-            bulletScoutTransform.position = bulletContainerTransform.position;
+            bulletScoutTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
 
 
         }

@@ -17,7 +17,7 @@ public class SP_UFO : MonoBehaviour {
 
     private bool b_turnBack = false;
 
-    private float f_counter = 20f;
+    private float f_counter = 10f;
 
     void Start () {
 
@@ -36,9 +36,9 @@ public class SP_UFO : MonoBehaviour {
             int i_random;
             i_random = Random.Range(0, 4);
 
-            if (i_random == 1) { Instantiate(UFO1Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 20 + i_random; }
-            if (i_random == 2) { Instantiate(UFO2Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 20 + i_random; }
-            if (i_random == 3) { Instantiate(UFO3Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 20 + i_random; }
+            if (i_random == 1) { Instantiate(UFO1Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 10 + i_random; }
+            if (i_random == 2) { Instantiate(UFO2Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 10 + i_random; }
+            if (i_random == 3) { Instantiate(UFO3Inst, v3_SP_UFO, new Quaternion(0, 0, 0, 0)); f_counter = 10 + i_random; }
 
 
         }
@@ -51,13 +51,13 @@ public class SP_UFO : MonoBehaviour {
         v3_SP_UFO.z = SP_UFOTransform.position.z;
 
 
-        if (SP_UFOTransform.position.y > 50f)
+        if (SP_UFOTransform.position.y > 30f)
 
         {
             b_turnBack = true;
         }
         
-        if (SP_UFOTransform.position.y < -50f)
+        if (SP_UFOTransform.position.y < -30f)
 
         {
             b_turnBack = false;

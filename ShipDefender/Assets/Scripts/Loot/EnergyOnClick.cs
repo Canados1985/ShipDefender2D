@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class EnergyOnClick : MonoBehaviour {
 
-    public static EnergyOnClick cl_EnergyOnClick;
-
     public GameObject go_EnergyInst;
     public GameObject go_Text;
 
@@ -14,34 +12,46 @@ public class EnergyOnClick : MonoBehaviour {
     public Transform energyTransform;
     private Vector3 v3_Energy;
 
-    public bool b_JustOne = false;
+   
     public bool b_IsCollecting = false;
+    public bool b_IsBusy = false;
 
-    private float f_counter = 10f;
+    private float f_counter = 5f;
  
     void Start () {
 
-        cl_EnergyOnClick = this;
-        go_EnergyInst.gameObject.name = "energy";
+       go_EnergyInst.gameObject.name = "energy";
+       b_IsCollecting = false;
     }
 
 
 
     private void FixedUpdate()
     {
-        if (b_IsCollecting == true)
+        if (this.b_IsCollecting == true)
         {
             f_counter -= Time.deltaTime;
         }
         if (f_counter <= 0)
         {
             Instantiate(go_Text, this.v3_Energy, new Quaternion());
+            
+            this.b_IsCollecting = false;
+            MainStation.cl_MainStation.f_mainStationEnergy = MainStation.cl_MainStation.f_mainStationEnergy + 10;
             f_counter = 10f;
-            MainStation.cl_MainStation.f_mainStationEnergy = MainStation.cl_MainStation.f_mainStationEnergy + 5;
             Destroy(this.gameObject);
 
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "harvestergun") // < ---- I need to add bool from Harvester
+        {
+            this.b_IsCollecting = true;
+        }
+    }
+
 
     void Update () {
 
@@ -51,49 +61,15 @@ public class EnergyOnClick : MonoBehaviour {
 
         //Debug.Log("EnergyTranform.x" + energyTransform.position.x);
 
-        if (b_IsCollecting == false)
-        { go_EnergyInst.transform.Translate(new Vector3(-0.005f, 0, 0)); }
-        
-
-        /* if (Input.GetMouseButtonDown(0))
+        if (this.b_IsCollecting == false && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
 
-            RaycastHit hit;
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit, 50.0f))
-            {
-
-                if (hit.transform != null)
-                {
-                    if (hit.transform.gameObject.name == "energy" && b_JustOne == false)
-                    {
-                        Debug.Log("how many times from energy click");
-                        //b_JustOne = true;
-                        //Destroy(go_EnergyInst);
-                        v3_Energy = hit.transform.position;
-                        Instantiate(go_Text, v3_Energy, new Quaternion());
-                        SetActiveFalse();
-                        hit.transform.gameObject.SetActive(false);
-                    }
-
-                }
-            }
+            go_EnergyInst.transform.Translate(new Vector3(-0.005f, 0, 0));
+            if (go_EnergyInst.transform.position.x < -30f)
+            { Destroy(this.gameObject); }
         }
 
-
-*/
 	}
     
 
-    private void SetActiveFalse()
-
-    {
-
-
-        go_EnergyInst.SetActive(false);
-        MainStation.cl_MainStation.f_mainStationEnergy = MainStation.cl_MainStation.f_mainStationEnergy + 5;
-
-    }
 }

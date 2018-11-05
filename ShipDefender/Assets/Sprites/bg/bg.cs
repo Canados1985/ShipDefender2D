@@ -117,14 +117,18 @@ public class bg : MonoBehaviour {
 
     void Update() {
 
-        go_bg.transform.Translate(new Vector3(-0.0005f, 0, 0));
-        go_bg2.transform.Translate(new Vector3(-0.0005f, 0, 0));
+        if (GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
+        {
+            go_bg.transform.Translate(new Vector3(-0.0005f, 0, 0));
+            go_bg2.transform.Translate(new Vector3(-0.0005f, 0, 0));
 
-        go_starsbg.transform.Translate(new Vector3(-0.00065f, 0, 0));
-        go_starsbg2.transform.Translate(new Vector3(-0.00065f, 0, 0));
+            go_starsbg.transform.Translate(new Vector3(-0.00065f, 0, 0));
+            go_starsbg2.transform.Translate(new Vector3(-0.00065f, 0, 0));
 
-        go_frontStarsbg.transform.Translate(new Vector3(-0.0007f, 0, 0));
-        go_frontStarsbg2.transform.Translate(new Vector3(-0.0007f, 0, 0));
+            go_frontStarsbg.transform.Translate(new Vector3(-0.0007f, 0, 0));
+            go_frontStarsbg2.transform.Translate(new Vector3(-0.0007f, 0, 0));
+        }
+
 
         if (go_bg_Transform.position.x + 70 < mainCameraTransform.position.x && b_newPosition == false)
         {

@@ -41,22 +41,41 @@ public class Asteroid_1 : MonoBehaviour {
 
             if (collision.gameObject.name == "missleR1")
             {
-               // Ranger.cl_Ranger.b_IsAimed_Ranger1 = false;
-             
+                // Ranger.cl_Ranger.b_IsAimed_Ranger1 = false;
+                FindObjectOfType<AudioManager>().Play("explosion");
                 DestroyAsteroid();
             }
             if (collision.gameObject.name == "missleR2")
             {
-               // Ranger.cl_Ranger.b_IsAimed_Ranger2 = false;
-              
+                // Ranger.cl_Ranger.b_IsAimed_Ranger2 = false;
+                FindObjectOfType<AudioManager>().Play("explosion");
                 DestroyAsteroid();
             }
             if (collision.gameObject.name == "missleR3")
             {
-               // Ranger.cl_Ranger.b_IsAimed_Ranger3 = false;
-               
+                // Ranger.cl_Ranger.b_IsAimed_Ranger3 = false;
+                FindObjectOfType<AudioManager>().Play("explosion");
                 DestroyAsteroid();
             }
+
+            DestroyAsteroid();
+        }
+        if (collision.gameObject.name == "missleSeekerC1" || collision.gameObject.name == "missleSeekerC2")
+        {
+
+            if (collision.gameObject.name == "missleSeekerC1")
+            {
+                // Ranger.cl_Ranger.b_IsAimed_Ranger1 = false;
+                FindObjectOfType<AudioManager>().Play("explosion");
+                DestroyAsteroid();
+            }
+            if (collision.gameObject.name == "missleSeekerC2")
+            {
+                // Ranger.cl_Ranger.b_IsAimed_Ranger2 = false;
+                FindObjectOfType<AudioManager>().Play("explosion");
+                DestroyAsteroid();
+            }
+
 
             DestroyAsteroid();
         }
