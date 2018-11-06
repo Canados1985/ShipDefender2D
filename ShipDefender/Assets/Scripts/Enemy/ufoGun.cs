@@ -19,12 +19,12 @@ public class ufoGun : MonoBehaviour {
         if (tempUFO.name == "ufo1(Clone)")
         {
 
-            if (collision.gameObject.name == "scout1")
+            if (collision.gameObject.name == "ScoutBodyCollider")
             {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingScout2 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
-
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "scout2")
@@ -40,6 +40,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingScout3 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "scout4")
@@ -47,6 +48,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingScout4 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
 
@@ -56,6 +58,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger1 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "ranger2")
@@ -63,6 +66,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger2 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "ranger3")
@@ -70,6 +74,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "MainStationSprite")
@@ -77,6 +82,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
                 MainStation.cl_MainStation.f_mainStationHealth = MainStation.cl_MainStation.f_mainStationHealth - 25;
             }
@@ -85,6 +91,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
             if (collision.gameObject.name == "corsair2")
@@ -92,6 +99,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO1IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO1.SetActive(true);
+                tempUFO.go_engineFireUFO1.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO1();
             }
 
@@ -99,11 +107,12 @@ public class ufoGun : MonoBehaviour {
 
         if (tempUFO.name == "ufo2(Clone)")
         {
-            if (collision.gameObject.name == "scout1")
+            if (collision.gameObject.name == "ScoutBodyCollider")
             {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingScout1 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "scout2")
@@ -111,6 +120,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingScout2 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "scout3")
@@ -118,6 +128,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingScout3 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "scout4")
@@ -125,6 +136,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingScout4 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
 
@@ -134,6 +146,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger1 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "ranger2")
@@ -141,6 +154,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger2 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "ranger3")
@@ -148,6 +162,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "MainStationSprite")
@@ -155,6 +170,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
                 MainStation.cl_MainStation.f_mainStationHealth = MainStation.cl_MainStation.f_mainStationHealth - 25;
             }
@@ -163,6 +179,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger2 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
             if (collision.gameObject.name == "corsair2")
@@ -170,17 +187,19 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO2IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO2.SetActive(true);
+                tempUFO.go_engineFireUFO2.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO2();
             }
         }
 
         if (tempUFO.name == "ufo3(Clone)")
         {
-            if (collision.gameObject.name == "scout1")
+            if (collision.gameObject.name == "ScoutBodyCollider")
             {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingScout1 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "scout2")
@@ -188,6 +207,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingScout2 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "scout3")
@@ -195,6 +215,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingScout3 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "scout4")
@@ -202,6 +223,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingScout4 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
 
@@ -211,6 +233,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger1 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "ranger2")
@@ -218,6 +241,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger2 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "ranger3")
@@ -225,6 +249,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "MainStationSprite")
@@ -232,6 +257,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
                 MainStation.cl_MainStation.f_mainStationHealth = MainStation.cl_MainStation.f_mainStationHealth - 25;
             }
@@ -240,6 +266,7 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger2 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
                 ObjPoolManager.cl_ObjPoolManager.FireUFO3();
             }
             if (collision.gameObject.name == "corsair2")
@@ -247,6 +274,8 @@ public class ufoGun : MonoBehaviour {
                 tempUFO.b_UFO3IsAttacking = true;
                 tempUFO.b_IsFollowingRanger3 = true;
                 tempUFO.go_gunFireUFO3.SetActive(true);
+                tempUFO.go_engineFireUFO3.SetActive(false);
+                ObjPoolManager.cl_ObjPoolManager.FireUFO3();
 
             }
 

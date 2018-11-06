@@ -30,7 +30,6 @@ public class ufo : MonoBehaviour
     public GameObject target7Scout3;
     public GameObject target8Scout4;
 
-
     public Transform target1MainStationTransform;
     public Transform target2Ranger1Transform;
     public Transform target3Ranger2Transform;
@@ -39,6 +38,8 @@ public class ufo : MonoBehaviour
     public Transform target6Scout2Transform;
     public Transform target7Scout3Transform;
     public Transform target8Scout4Transform;
+    public Transform target9Corsair1Transform;
+    public Transform target10Corsair2Transform;
 
     public GameObject laserRef;
 
@@ -62,6 +63,10 @@ public class ufo : MonoBehaviour
     public bool b_IsFollowingRanger1 = false;
     public bool b_IsFollowingRanger2 = false;
     public bool b_IsFollowingRanger3 = false;
+
+    public bool b_IsFollowingCorsair1 = false;
+    public bool b_IsFollowingCorsair2 = false;
+
 
     public bool b_UFO1IsAttacking = false;
     public bool b_UFO2IsAttacking = false;
@@ -270,6 +275,9 @@ public class ufo : MonoBehaviour
         float distanceToTarget7 = Vector3.Distance(transform.position, target7Scout3Transform.position);
         float distanceToTarget8 = Vector3.Distance(transform.position, target8Scout4Transform.position);
 
+        float distanceToTarget9 = Vector3.Distance(transform.position, target9Corsair1Transform.position);
+        float distanceToTarget10 = Vector3.Distance(transform.position, target10Corsair2Transform.position);
+
 
 
         if (this.gameObject.name == "ufo1(Clone)")
@@ -355,6 +363,27 @@ public class ufo : MonoBehaviour
 
                 transform.Translate(Vector3.up * Time.deltaTime * f_speed);
             }
+            //Following Corsair1
+            if (b_IsFollowingCorsair1 == true && b_UFO1IsAttacking == false)
+            {
+                Vector3 targetDir = target9Corsair1Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
+            //Following Corsair2
+            if (b_IsFollowingCorsair2 == true && b_UFO1IsAttacking == false)
+            {
+                Vector3 targetDir = target10Corsair2Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
+
         }
 
         if (this.gameObject.name == "ufo2(Clone)")
@@ -440,6 +469,26 @@ public class ufo : MonoBehaviour
 
                 transform.Translate(Vector3.up * Time.deltaTime * f_speed);
             }
+            //Following Corsair1
+            if (b_IsFollowingCorsair1 == true && b_UFO2IsAttacking == false)
+            {
+                Vector3 targetDir = target9Corsair1Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
+            //Following Corsair2
+            if (b_IsFollowingCorsair2 == true && b_UFO2IsAttacking == false)
+            {
+                Vector3 targetDir = target10Corsair2Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
         }
 
         if (this.gameObject.name == "ufo3(Clone)")
@@ -519,6 +568,26 @@ public class ufo : MonoBehaviour
             if (b_IsFollowingScout4 == true && b_UFO3IsAttacking == false)
             {
                 Vector3 targetDir = target8Scout4Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
+            //Following Corsair1
+            if (b_IsFollowingCorsair1 == true && b_UFO3IsAttacking == false)
+            {
+                Vector3 targetDir = target9Corsair1Transform.position - transform.position;
+                float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
+                Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);
+
+                transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+            }
+            //Following Corsair2
+            if (b_IsFollowingCorsair2 == true && b_UFO3IsAttacking == false)
+            {
+                Vector3 targetDir = target10Corsair2Transform.position - transform.position;
                 float angle = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90f;
                 Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, q, f_rotationSpeed);

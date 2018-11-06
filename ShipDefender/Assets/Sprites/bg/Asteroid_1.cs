@@ -26,9 +26,9 @@ public class Asteroid_1 : MonoBehaviour {
 
         float f_randomScale;
         f_randomScale = Random.Range(0f, 3f);
-        if (f_randomScale < 1) { Asteroid1Transform.localScale = new Vector3(4, 4, 4); }
-        if (f_randomScale >= 2) { Asteroid1Transform.localScale = new Vector3(3, 3, 3); }
-        if (f_randomScale > 3) { Asteroid1Transform.localScale = new Vector3(2, 2, 2); }
+        if (f_randomScale < 1) { Asteroid1Transform.localScale = new Vector3(5, 5, 5); Asteroid1Transform.rotation = new Quaternion(45, 0, 0, 0); }
+        if (f_randomScale >= 2) { Asteroid1Transform.localScale = new Vector3(4, 4, 4); Asteroid1Transform.rotation = new Quaternion(90, 0, 0, 0); }
+        if (f_randomScale > 3) { Asteroid1Transform.localScale = new Vector3(3, 3, 3); Asteroid1Transform.rotation = new Quaternion(45, 45, 0, 0); }
         
         
     }

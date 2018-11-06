@@ -27,6 +27,23 @@ public class ufo1Sensor : MonoBehaviour {
 
         if (tempUFO.gameObject.name == "ufo1(Clone)")
         {
+
+
+            if (collision.gameObject.name == "corsair1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair1 = true;
+                tempUFO.target9Corsair1Transform.position = collision.transform.position;
+
+            }
+            if (collision.gameObject.name == "corsair2" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair2 = true;
+                tempUFO.target10Corsair2Transform.position = collision.transform.position;
+            }
+
+
             if (collision.gameObject.name == "ranger1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsCorsair == false && b_colliderIsDestroyer == false)
             {
                 b_colliderIsRanger = true;
@@ -72,11 +89,29 @@ public class ufo1Sensor : MonoBehaviour {
                 tempUFO.target8Scout4Transform.position = collision.transform.position;
             }
 
+
+
+
         }
 
 
         if (tempUFO.gameObject.name == "ufo2(Clone)")
         {
+            if (collision.gameObject.name == "corsair1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair1 = true;
+                tempUFO.target9Corsair1Transform.position = collision.transform.position;
+
+            }
+            if (collision.gameObject.name == "corsair2" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair2 = true;
+                tempUFO.target10Corsair2Transform.position = collision.transform.position;
+            }
+
+
             if (collision.gameObject.name == "ranger1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsCorsair == false && b_colliderIsDestroyer == false)
             {
                 b_colliderIsRanger = true;
@@ -127,6 +162,22 @@ public class ufo1Sensor : MonoBehaviour {
 
         if (tempUFO.gameObject.name == "ufo3(Clone)")
         {
+
+            if (collision.gameObject.name == "corsair1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair1 = true;
+                tempUFO.target9Corsair1Transform.position = collision.transform.position;
+
+            }
+            if (collision.gameObject.name == "corsair2" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsRanger == false && b_colliderIsDestroyer == false)
+            {
+                b_colliderIsRanger = true;
+                tempUFO.b_IsFollowingCorsair2 = true;
+                tempUFO.target10Corsair2Transform.position = collision.transform.position;
+            }
+
+
             if (collision.gameObject.name == "ranger1" && b_ColliderIsMainstation == false && b_colliderIsHarvester == false && b_colliderIsScout == false && b_colliderIsCorsair == false && b_colliderIsDestroyer == false)
             {
                 b_colliderIsRanger = true;
@@ -181,6 +232,11 @@ public class ufo1Sensor : MonoBehaviour {
 
 
 
+
+
+
+
+
     }
 
 
@@ -207,6 +263,7 @@ public class ufo1Sensor : MonoBehaviour {
                 b_colliderIsRanger = false;
                 b_colliderIsCorsair = false;
                 b_colliderIsDestroyer = false;
+                b_ColliderIsMainstation = false;
 
                 tempUFO.b_IsFollowingRanger1 = false;
                 tempUFO.b_IsFollowingRanger2 = false;
@@ -215,9 +272,12 @@ public class ufo1Sensor : MonoBehaviour {
                 tempUFO.b_IsFollowingScout2 = false;
                 tempUFO.b_IsFollowingScout3 = false;
                 tempUFO.b_IsFollowingScout4 = false;
+                tempUFO.b_IsFollowingCorsair1 = false;
+                tempUFO.b_IsFollowingCorsair2 = false;
 
                 tempUFO.b_UFO1IsAttacking = false;
                 tempUFO.go_gunFireUFO1.SetActive(false);
+                tempUFO.go_engineFireUFO1.SetActive(true);
                 f_counter = 3;
 
             }
@@ -229,6 +289,7 @@ public class ufo1Sensor : MonoBehaviour {
                 b_colliderIsRanger = false;
                 b_colliderIsCorsair = false;
                 b_colliderIsDestroyer = false;
+                b_ColliderIsMainstation = false;
 
                 tempUFO.b_IsFollowingRanger1 = false;
                 tempUFO.b_IsFollowingRanger2 = false;
@@ -237,9 +298,12 @@ public class ufo1Sensor : MonoBehaviour {
                 tempUFO.b_IsFollowingScout2 = false;
                 tempUFO.b_IsFollowingScout3 = false;
                 tempUFO.b_IsFollowingScout4 = false;
+                tempUFO.b_IsFollowingCorsair1 = false;
+                tempUFO.b_IsFollowingCorsair2 = false;
 
                 tempUFO.b_UFO2IsAttacking = false;
                 tempUFO.go_gunFireUFO2.SetActive(false);
+                tempUFO.go_engineFireUFO2.SetActive(true);
                 f_counter = 3;
 
             }
@@ -251,6 +315,7 @@ public class ufo1Sensor : MonoBehaviour {
                 b_colliderIsRanger = false;
                 b_colliderIsCorsair = false;
                 b_colliderIsDestroyer = false;
+                b_ColliderIsMainstation = false;
 
                 tempUFO.b_IsFollowingRanger1 = false;
                 tempUFO.b_IsFollowingRanger2 = false;
@@ -259,9 +324,12 @@ public class ufo1Sensor : MonoBehaviour {
                 tempUFO.b_IsFollowingScout2 = false;
                 tempUFO.b_IsFollowingScout3 = false;
                 tempUFO.b_IsFollowingScout4 = false;
+                tempUFO.b_IsFollowingCorsair1 = false;
+                tempUFO.b_IsFollowingCorsair2 = false;
 
                 tempUFO.b_UFO3IsAttacking = false;
                 tempUFO.go_gunFireUFO3.SetActive(false);
+                tempUFO.go_engineFireUFO3.SetActive(true);
                 f_counter = 3;
 
             }

@@ -31,7 +31,7 @@ public class SP_Asteroid : MonoBehaviour {
         go_SP_Asteroid = GameObject.Find("SP_Asteroid");
         SP_AsteroidTransform = go_SP_Asteroid.GetComponent<Transform>();
 
-        SP_AsteroidTransform.position = new Vector3(35, SP_AsteroidTransform.position.y, SP_AsteroidTransform.position.z);
+        SP_AsteroidTransform.position = new Vector3(55, SP_AsteroidTransform.position.y, SP_AsteroidTransform.position.z);
 
     }
 

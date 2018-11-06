@@ -77,7 +77,7 @@ public class UnknownRes : MonoBehaviour {
         {
             go_UnknownRes.transform.Translate(new Vector3(-0.0055f, 0, 0));
 
-            if (go_UnknownRes.transform.position.x < -30f)
+            if (go_UnknownRes.transform.position.x < -50f)
             { Destroy(this.gameObject); }
         }
 

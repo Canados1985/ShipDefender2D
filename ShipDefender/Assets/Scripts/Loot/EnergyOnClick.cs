@@ -64,7 +64,7 @@ public class EnergyOnClick : MonoBehaviour {
         {
 
             go_EnergyInst.transform.Translate(new Vector3(-0.005f, 0, 0));
-            if (go_EnergyInst.transform.position.x < -30f)
+            if (go_EnergyInst.transform.position.x < -50f)
             { Destroy(this.gameObject); }
         }
 

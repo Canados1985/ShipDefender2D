@@ -38,6 +38,8 @@ public class Scout : MonoBehaviour {
 
     private Vector3 v3_Scout;
 
+    public GameObject go_EnergyInst;
+
     public GameObject go_flame1;
     public GameObject go_flame2;
 
@@ -68,7 +70,7 @@ public class Scout : MonoBehaviour {
 
 
     public bool b_movingToPatrolPoint1 = false;
-    public bool b_movingToPatrolPoint2 = true;
+    public bool b_movingToPatrolPoint2 = false;
     public bool b_movingBackToBase = false;
     public bool b_chasingUFO = false;
     public bool b_chasingAsteroid = false;
@@ -110,7 +112,11 @@ public class Scout : MonoBehaviour {
             asteroid1TransformTarget = target7Asteroid1.GetComponent<Transform>();
             asteroid2TransformTarget = target8Asteroid2.GetComponent<Transform>();
 
-
+            int i_random;
+            i_random = Random.Range(0, 10);
+            if (i_random == 5) { b_movingToPatrolPoint1 = true; };
+            if (i_random > 5) { b_movingToPatrolPoint2 = true; };
+            if (i_random < 5) { b_movingToPatrolPoint1 = true; }; // Can be added new point for first start
         }
 
         if (this.gameObject.name == "scout2")
@@ -136,6 +142,13 @@ public class Scout : MonoBehaviour {
             ufo3TransformTarget = target6UFO3.GetComponent<Transform>();
             asteroid1TransformTarget = target7Asteroid1.GetComponent<Transform>();
             asteroid2TransformTarget = target8Asteroid2.GetComponent<Transform>();
+
+
+            int i_random;
+            i_random = Random.Range(0, 10);
+            if (i_random == 5) { b_movingToPatrolPoint1 = true; };
+            if (i_random > 5) { b_movingToPatrolPoint2 = true; };
+            if (i_random < 5) { b_movingToPatrolPoint1 = true; }; // Can be added new point for first start
 
 
         }
@@ -164,6 +177,12 @@ public class Scout : MonoBehaviour {
             asteroid1TransformTarget = target7Asteroid1.GetComponent<Transform>();
             asteroid2TransformTarget = target8Asteroid2.GetComponent<Transform>();
 
+            int i_random;
+            i_random = Random.Range(0, 10);
+            if (i_random == 5) { b_movingToPatrolPoint1 = true; };
+            if (i_random > 5) { b_movingToPatrolPoint2 = true; };
+            if (i_random < 5) { b_movingToPatrolPoint1 = true; }; // Can be added new point for first start
+
         }
 
         if (this.gameObject.name == "scout4")
@@ -190,13 +209,20 @@ public class Scout : MonoBehaviour {
             asteroid1TransformTarget = target7Asteroid1.GetComponent<Transform>();
             asteroid2TransformTarget = target8Asteroid2.GetComponent<Transform>();
 
+
+            int i_random;
+            i_random = Random.Range(0, 10);
+            if (i_random == 5) { b_movingToPatrolPoint1 = true; };
+            if (i_random > 5) { b_movingToPatrolPoint2 = true; };
+            if (i_random < 5) { b_movingToPatrolPoint1 = true; }; // Can be added new point for first start
         }
 
 
     }
 
-    void DestroyScout()
+    public void DestroyScout()
     {
+        Instantiate(go_EnergyInst, scoutTransform.position, new Quaternion());
         go_Scout.SetActive(false);
         scoutTransform.position = ScoutContainerTransform.position;
     }
@@ -220,6 +246,29 @@ public class Scout : MonoBehaviour {
             FindObjectOfType<AudioManager>().Play("scoutGun");
             b_GunSound = true;
         }
+        
+    }
+
+    public void AvoidAttack()
+    {
+        int i_random;
+        i_random = Random.Range(0, 10);
+        
+        if (i_random > 5)
+        {
+
+          transform.Translate(Vector3.right * Time.deltaTime * f_speed * -5);
+         //transform.Rotate(Vector3.right * Time.deltaTime * f_speed * -0.5f);
+
+            b_IsAimed_Scout1 = false;
+            b_IsAimed_Scout2 = false;
+            b_IsAimed_Scout3 = false;
+            b_IsAimed_Scout4 = false;
+            b_chasingUFO = false;
+            go_gunFire1.SetActive(false);
+            go_gunFire2.SetActive(false);
+        }
+
         
     }
 
@@ -255,11 +304,12 @@ public class Scout : MonoBehaviour {
         float distanceToTarget5 = Vector3.Distance(transform.position, ufo2TransformTarget.position);
         float distanceToTarget6 = Vector3.Distance(transform.position, ufo3TransformTarget.position);
 
+        ScoutAvoidSystem temp = gameObject.GetComponentInChildren<ScoutAvoidSystem>();
 
         // Scouts Behavior --->
 
         // Scout 1 behavior
-        if (this.gameObject.name == "scout1")
+        if (this.gameObject.name == "scout1" && temp.b_avoidUFOAtack == false)
         {
             //Moving to Patrol Point 1
             if (Vector2.Distance(transform.position, pointPatrol1TransformTarget.position) > 0.5f && b_movingToPatrolPoint1 == true && b_IsAimed_Scout1 == false && b_chasingUFO == false && b_chasingAsteroid == false)
@@ -672,6 +722,17 @@ public class Scout : MonoBehaviour {
 
     private void Update()
     {
+        ScoutAvoidSystem temp = gameObject.GetComponentInChildren<ScoutAvoidSystem>();
+
+        if (temp.b_avoidUFOAtack == true)
+        {
+            AvoidAttack();
+        }
+
+        v3_Scout.x = scoutTransform.position.x;
+        v3_Scout.y = scoutTransform.position.y;
+        v3_Scout.z = scoutTransform.position.z;
+
         /*
         if (Input.GetKeyDown(KeyCode.W))
         {

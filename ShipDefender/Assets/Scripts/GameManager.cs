@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour {
 
     // UI button --->
     public GameObject HarvesterButton; 
-
     public GameObject mainStationInst;
 
     public GameObject harvesterInst;
@@ -189,7 +188,7 @@ public class GameManager : MonoBehaviour {
                 return go_ScoutList[i];
             }
 
-           }
+        }
 
         GameObject temp = Instantiate(scoutInst);
         go_ScoutList.Add(temp);
@@ -332,6 +331,58 @@ public class GameManager : MonoBehaviour {
 
         }
 
+
+
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (go_HarvesterList[3].activeSelf == true)
+            {
+                Debug.Log("WE GOT 4 HARVESTERS");
+                PanelUserControl.cl_PanelUserControl.go_HarvesterButtonLimit.SetActive(true);
+            }
+            if (go_HarvesterList[3].activeSelf == false)
+            {
+                PanelUserControl.cl_PanelUserControl.go_HarvesterButtonLimit.SetActive(false);
+            }
+
+
+            if (go_ScoutList[3].activeSelf == true)
+            {
+                Debug.Log("WE GOT 4 SCOUTS");
+                PanelUserControl.cl_PanelUserControl.go_ScoutButtonLimit.SetActive(true);
+            }
+            if (go_ScoutList[3].activeSelf == false)
+            {
+                PanelUserControl.cl_PanelUserControl.go_ScoutButtonLimit.SetActive(false);
+            }
+
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            if (go_RangerList[2].activeSelf == true)
+            {
+                Debug.Log("WE GOT 3 RANGERS");
+                PanelUserControl.cl_PanelUserControl.go_RangerButtonLimit.SetActive(true);
+            }
+            if (go_RangerList[2].activeSelf == false)
+            {
+                PanelUserControl.cl_PanelUserControl.go_RangerButtonLimit.SetActive(false);
+            }
+
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            if (go_CorsairList[1].activeSelf == true)
+            {
+                Debug.Log("WE GOT 2 CORSAIRS");
+                PanelUserControl.cl_PanelUserControl.go_CorsairButtonLimit.SetActive(true);
+            }
+            if (go_CorsairList[1].activeSelf == false)
+            {
+                PanelUserControl.cl_PanelUserControl.go_CorsairButtonLimit.SetActive(false);
+            }
+        }
 
     }
 

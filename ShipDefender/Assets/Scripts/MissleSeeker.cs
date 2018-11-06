@@ -61,8 +61,8 @@ public class MissleSeeker : MonoBehaviour {
     void Start() {
 
         rb_missleSeeker = GetComponent<Rigidbody2D>();
-        
-    }
+
+}
 
 
 
@@ -72,38 +72,41 @@ public class MissleSeeker : MonoBehaviour {
         if (collision.gameObject.tag == "UFO")
 
         {
-            Debug.Log("MISSLE HITS UFO");
             explosionTransform.position = collision.transform.position;
             Instantiate(go_ExplosionInst, collision.transform.position, new Quaternion());
             Instantiate(go_EnergyInst, collision.transform.position, new Quaternion());
 
             go_missleSeeker.SetActive(false);
             missleSeekerTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
+            b_pickTarger1UFO1 = false;
+            b_pickTarger2UFO2 = false;
+            b_pickTarger3UFO3 = false;
 
         }
         if (collision.gameObject.tag == "ASTEROID")
 
         {
-            Debug.Log("MISSLE HITS ASTEROID");
+
             explosionTransform.position = collision.transform.position;
             Instantiate(go_ExplosionInst, collision.transform.position, new Quaternion());
 
 
             go_missleSeeker.SetActive(false);
             missleSeekerTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
+            b_pickTarger4Asteroid1 = false;
 
         }
         if (collision.gameObject.tag == "ASTEROID2")
 
         {
-            Debug.Log("MISSLE HITS ASTEROID2");
+
             explosionTransform.position = collision.transform.position;
             Instantiate(go_ExplosionInst, collision.transform.position, new Quaternion());
 
 
             go_missleSeeker.SetActive(false);
             missleSeekerTransform.position = ObjPoolManager.cl_ObjPoolManager.transform.position;
-
+            b_pickTarger5Asteroid2 = false;
 
         }
     }
@@ -168,8 +171,8 @@ public class MissleSeeker : MonoBehaviour {
 
             transform.Translate(Vector3.up * Time.deltaTime * f_speed);
         }
-
-        transform.Translate(Vector3.up * Time.deltaTime * f_speed);
+        else { transform.Translate(Vector3.up * Time.deltaTime * f_speed); }
+        
 
     
     }

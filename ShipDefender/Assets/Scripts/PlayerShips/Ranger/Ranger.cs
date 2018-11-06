@@ -42,6 +42,8 @@ public class Ranger : MonoBehaviour {
     public GameObject missleRef;
     public GameObject go_shipExplosionInst;
 
+    public GameObject go_EnergyInst;
+
     private float f_counterR1 = 5f;
     private float f_counterR2 = 5f;
     private float f_counterR3 = 5f;
@@ -160,6 +162,7 @@ public class Ranger : MonoBehaviour {
 
     void DestroyRanger()
     {
+        Instantiate(go_EnergyInst, rangerTransform.position, new Quaternion());
         go_Ranger.SetActive(false);
         rangerTransform.position = RangerContainerTransform.position;
     }

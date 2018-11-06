@@ -39,6 +39,8 @@ public class Corsair : MonoBehaviour {
 
     private Vector3 v3_Corsair;
 
+    public GameObject go_EnergyInst;
+
     public GameObject go_flame1;
     public GameObject go_flame2;
 
@@ -133,6 +135,7 @@ public class Corsair : MonoBehaviour {
 
     void DestroyCorsair()
     {
+        Instantiate(go_EnergyInst, corsairTransform.position, new Quaternion());
         go_Corsair.SetActive(false);
         corsairTransform.position = CorsairContainerTransform.position;
     }

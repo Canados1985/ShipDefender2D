@@ -12,7 +12,7 @@ public class ScoutSensor : MonoBehaviour {
     public bool b_colIsAsteriod1 = false;
     public bool b_colIsAsteroid2 = false;
 
-    float f_counter = 1;
+    public float f_counter = 0.2f;
 
 
     void Start () {
@@ -258,7 +258,7 @@ public class ScoutSensor : MonoBehaviour {
                 tempScout.b_chasingUFO = false;
                 tempScout.b_chasingAsteroid = false;
                 tempScout.b_GunSound = false;
-                f_counter = 1;
+                f_counter = 0.2f;
             }
             if (this.gameObject.GetComponentInParent<Scout>().gameObject.name == "scout2")
             {
@@ -271,7 +271,7 @@ public class ScoutSensor : MonoBehaviour {
                 tempScout.b_chasingUFO = false;
                 tempScout.b_chasingAsteroid = false;
                 tempScout.b_GunSound = false;
-                f_counter = 1;
+                f_counter = 0.2f;
             }
             if (this.gameObject.GetComponentInParent<Scout>().gameObject.name == "scout3")
             {
@@ -284,7 +284,7 @@ public class ScoutSensor : MonoBehaviour {
                 tempScout.b_GunSound = false;
                 tempScout.b_chasingUFO = false;
                 tempScout.b_chasingAsteroid = false;
-                f_counter = 1;
+                f_counter = 0.2f;
             }
             if (this.gameObject.GetComponentInParent<Scout>().gameObject.name == "scout4")
             {
@@ -297,7 +297,7 @@ public class ScoutSensor : MonoBehaviour {
                 tempScout.b_GunSound = false;
                 tempScout.b_chasingUFO = false;
                 tempScout.b_chasingAsteroid = false;
-                f_counter = 1;
+                f_counter = 0.2f;
             }
 
 

@@ -103,6 +103,8 @@
     <Compile Include="Assets\Scripts\PlayerShips\Ranger\RangersColliders.cs" />
     <Compile Include="Assets\Scripts\PlayerShips\Ranger\RangerSensor.cs" />
     <Compile Include="Assets\Scripts\PlayerShips\Scout\Scout.cs" />
+    <Compile Include="Assets\Scripts\PlayerShips\Scout\ScoutAvoidSystem.cs" />
+    <Compile Include="Assets\Scripts\PlayerShips\Scout\ScoutBodyCollider.cs" />
     <Compile Include="Assets\Scripts\PlayerShips\Scout\ScoutsColliders.cs" />
     <Compile Include="Assets\Scripts\PlayerShips\Scout\ScoutSensor.cs" />
     <Compile Include="Assets\Scripts\ShipExplosion.cs" />
