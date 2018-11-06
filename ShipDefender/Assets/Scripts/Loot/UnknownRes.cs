@@ -25,27 +25,24 @@ public class UnknownRes : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "harvestergun") // < ---- I need to add bool from Harvester
+        if (collision.gameObject.name == "harvestergun") // < ---- I think I need to add one more bool from Harvester
         {
             this.b_IsCollecting = true;
         }
         if (collision.gameObject.name == "missleR1")
         {
-            //Ranger.cl_Ranger.b_IsAimed_Ranger1 = false;
             
             Destroy(this.gameObject);
             FindObjectOfType<AudioManager>().Play("explosion");
         }
         if (collision.gameObject.name == "missleR2")
         {
-            //Ranger.cl_Ranger.b_IsAimed_Ranger2 = false;
             
             Destroy(this.gameObject);
             FindObjectOfType<AudioManager>().Play("explosion");
         }
         if (collision.gameObject.name == "missleR3")
         {
-            //Ranger.cl_Ranger.b_IsAimed_Ranger3 = false;
             
             Destroy(this.gameObject);
             FindObjectOfType<AudioManager>().Play("explosion");

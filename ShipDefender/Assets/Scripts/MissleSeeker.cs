@@ -6,9 +6,6 @@ public class MissleSeeker : MonoBehaviour {
 
     public static MissleSeeker cl_missleSeeker;
 
-    //GameObject target;
-    //Quaternion rotateToTarget;
-    
 
     public GameObject go_missleSeeker;
     public Rigidbody2D rb_missleSeeker;
@@ -175,52 +172,7 @@ public class MissleSeeker : MonoBehaviour {
         transform.Translate(Vector3.up * Time.deltaTime * f_speed);
 
     
-
-        //CorsairSensor tempSensor = GameObject.Find("CorsairContainer/corsair1/Sensor").GetComponent<CorsairSensor>();
-
-        /*   if (tempSensor.b_colIsUFO1 == true)
-           {
-               target = GameObject.Find("ufo1(Clone)");
-               targetTransform = target.GetComponent<Transform>();
-
-               v3_missleSeeker = (target.transform.position - transform.position).normalized;
-               float angle = Mathf.Atan2(v3_missleSeeker.y, v3_missleSeeker.x) * Mathf.Rad2Deg;
-               rotateToTarget = Quaternion.AngleAxis(angle, Vector3.forward);
-               transform.rotation = Quaternion.Slerp(transform.rotation, rotateToTarget, Time.deltaTime * f_rotationSpeed);
-
-               rb_missleSeeker.velocity = transform.right * f_speed;
-           }
-
-           if (tempSensor.b_colIsUFO2 == true)
-           {
-               target = GameObject.Find("ufo2(Clone)");
-               targetTransform = target.GetComponent<Transform>();
-
-               v3_missleSeeker = (target.transform.position - transform.position).normalized;
-               float angle = Mathf.Atan2(v3_missleSeeker.y, v3_missleSeeker.x) * Mathf.Rad2Deg;
-               rotateToTarget = Quaternion.AngleAxis(angle, Vector3.forward);
-               transform.rotation = Quaternion.Slerp(transform.rotation, rotateToTarget, Time.deltaTime * f_rotationSpeed);
-
-               rb_missleSeeker.velocity = transform.right * f_speed;
-           }
-
-           if (tempSensor.b_colIsUFO3 == true)
-           {
-               target = GameObject.Find("ufo3Clone)");
-               targetTransform = target.GetComponent<Transform>();
-
-               v3_missleSeeker = (target.transform.position - transform.position).normalized;
-               float angle = Mathf.Atan2(v3_missleSeeker.y, v3_missleSeeker.x) * Mathf.Rad2Deg;
-               rotateToTarget = Quaternion.AngleAxis(angle, Vector3.forward);
-               transform.rotation = Quaternion.Slerp(transform.rotation, rotateToTarget, Time.deltaTime * f_rotationSpeed);
-
-               rb_missleSeeker.velocity = transform.right * f_speed;
-       
-        }
-        */
     }
-
-
 
 
     void Update () {

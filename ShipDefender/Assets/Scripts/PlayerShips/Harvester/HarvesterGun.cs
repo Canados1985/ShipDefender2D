@@ -26,7 +26,6 @@ public class HarvesterGun : MonoBehaviour {
         {
             tempHarvester.b_IsWorking = true;
             go_EnergyRef.GetComponent<EnergyOnClick>().b_IsCollecting = true;
-            //Harvester.cl_Harvester.rb_Harvester.velocity = Vector3.zero;
             go_HarvesterGunSprite.SetActive(true);
             
         }
@@ -35,7 +34,6 @@ public class HarvesterGun : MonoBehaviour {
         {
            tempHarvester.b_IsWorking = true;
             go_UnknownResRef.GetComponent<UnknownRes>().b_IsCollecting = true;
-            //Harvester.cl_Harvester.rb_Harvester.velocity = Vector3.zero;
             go_HarvesterGunSprite.SetActive(true);
         }
     }

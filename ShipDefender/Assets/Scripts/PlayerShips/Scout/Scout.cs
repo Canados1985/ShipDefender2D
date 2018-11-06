@@ -256,7 +256,9 @@ public class Scout : MonoBehaviour {
         float distanceToTarget6 = Vector3.Distance(transform.position, ufo3TransformTarget.position);
 
 
-        // SCouts Behavior --->
+        // Scouts Behavior --->
+
+        // Scout 1 behavior
         if (this.gameObject.name == "scout1")
         {
             //Moving to Patrol Point 1
@@ -358,7 +360,7 @@ public class Scout : MonoBehaviour {
             }
 
         }
-
+        // Scout 2 behavior
         if (this.gameObject.name == "scout2")
         {
             //Moving to Patrol Point 1
@@ -459,7 +461,7 @@ public class Scout : MonoBehaviour {
             }
 
         }
-
+        // Scout 3 behavior
         if (this.gameObject.name == "scout3")
         {
             //Moving to Patrol Point 1
@@ -560,7 +562,7 @@ public class Scout : MonoBehaviour {
             }
 
         }
-
+        // Scout 4 behavior
         if (this.gameObject.name == "scout4")
         {
             //Moving to Patrol Point 1

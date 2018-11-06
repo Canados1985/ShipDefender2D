@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class CorsairContainer : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public static CorsairContainer cl_CorsairContainer;
+
+    public GameObject go_CorsairContainer;
+
+    public Transform corsairContainerTransform;
+    public Transform MainShipTransform;
+
+
+    void Start () {
+        cl_CorsairContainer = this;
+    }
 	
-	// Update is called once per frame
+	
 	void Update () {
-		
-	}
+
+        corsairContainerTransform.position = new Vector3(MainShipTransform.position.x, MainShipTransform.position.y, MainShipTransform.position.z + 5);
+
+    }
 }

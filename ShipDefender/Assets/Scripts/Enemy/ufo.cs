@@ -11,8 +11,9 @@ public class ufo : MonoBehaviour
     public GameObject go_gunFireUFO1;
     public GameObject go_gunFireUFO2;
     public GameObject go_gunFireUFO3;
-
-
+    public GameObject go_engineFireUFO1;
+    public GameObject go_engineFireUFO2;
+    public GameObject go_engineFireUFO3;
 
 
     public Transform ufoTransform;

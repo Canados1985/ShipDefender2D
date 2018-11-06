@@ -832,9 +832,10 @@ public class ObjPoolManager : MonoBehaviour {
 
     // ---- POOL FOR UFO ---- //
 
+    //UFO1 Fire
     public GameObject FireUFO1()
     {
-        ufoGun go_temp = GameObject.Find("ufo1(Clone)/gun").GetComponent<ufoGun>();
+        GameObject go_temp = GameObject.Find("ufo1(Clone)/gun");
         Transform tempTransform = go_temp.GetComponent<Transform>();
         for (int i = 0; i < 10; i++)
         {
@@ -856,7 +857,7 @@ public class ObjPoolManager : MonoBehaviour {
     public GameObject FireUFO2()
     {
 
-        ufoGun go_temp = GameObject.Find("ufo2(Clone)/gun").GetComponent<ufoGun>();
+        GameObject go_temp = GameObject.Find("ufo2(Clone)/gun");
         Transform tempTransform = go_temp.GetComponent<Transform>();
         for (int i = 0; i < 10; i++)
         {
@@ -877,7 +878,7 @@ public class ObjPoolManager : MonoBehaviour {
     //UFO3 Fire
     public GameObject FireUFO3()
     {
-        ufoGun go_temp = GameObject.Find("ufo3(Clone)/gun").GetComponent<ufoGun>();
+        GameObject go_temp = GameObject.Find("ufo3(Clone)/gun");
         Transform tempTransform = go_temp.GetComponent<Transform>();
         for (int i = 0; i < 10; i++)
         {

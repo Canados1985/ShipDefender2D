@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour {
         PreloadGameObj();
         GameStatesManagerInst = GameObject.Find("GameStateManager");
 
-       // GameStatesManagerInst.GetComponent<GameStateManager>().GameMenu(); // Normal Start With UI
-        GameStatesManagerInst.GetComponent<GameStateManager>().StartGame(); // developing start
+      // GameStatesManagerInst.GetComponent<GameStateManager>().GameMenu(); // Normal Start With UI
+       GameStatesManagerInst.GetComponent<GameStateManager>().StartGame(); // Developing start
 
     }
 

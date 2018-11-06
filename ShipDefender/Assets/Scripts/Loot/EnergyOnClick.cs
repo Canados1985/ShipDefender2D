@@ -46,7 +46,7 @@ public class EnergyOnClick : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "harvestergun") // < ---- I need to add bool from Harvester
+        if (collision.gameObject.name == "harvestergun") // < ---- I think I need to add one more bool from Harvester
         {
             this.b_IsCollecting = true;
         }
@@ -59,8 +59,7 @@ public class EnergyOnClick : MonoBehaviour {
         v3_Energy.y = energyTransform.position.y;
         v3_Energy.z = energyTransform.position.z;
 
-        //Debug.Log("EnergyTranform.x" + energyTransform.position.x);
-
+        
         if (this.b_IsCollecting == false && GameStateManager.cl_GameStateManager.b_IsGameIsPaused == false)
         {
 

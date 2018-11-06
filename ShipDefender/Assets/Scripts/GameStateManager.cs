@@ -35,7 +35,7 @@ public class GameStateManager : MonoBehaviour {
         go_IntroPanel.SetActive(false);
         go_StartButtonIntro.SetActive(false);
     }
-
+    // Game Manu State
     public void GameMenu()
     {
         cl_GameStateManager = this;
@@ -44,7 +44,7 @@ public class GameStateManager : MonoBehaviour {
         go_MenuCamera.SetActive(true);
         FindObjectOfType<AudioManager>().Play("menuTheme");
     }
-
+    // Game Intro State
     public void GameIntro()
     {
         go_MenuPanel.SetActive(false);
@@ -59,7 +59,7 @@ public class GameStateManager : MonoBehaviour {
         textColor.a = 0;
         Debug.Log("TEXT COLOR AFTER " + textColor.a);
     }
-
+    // Game State
     public void StartGame()
     {
         b_IsGameMode = true;
@@ -71,7 +71,7 @@ public class GameStateManager : MonoBehaviour {
         FindObjectOfType<AudioManager>().Play("mainTheme");
         FindObjectOfType<AudioManager>().Stop("gameoverTheme");
     }
-
+    // Game Pause State
     public void PauseGame()
     {
         e_gameStates = GameStates.PAUSE;
@@ -81,7 +81,7 @@ public class GameStateManager : MonoBehaviour {
         Time.timeScale = 0f;
         FindObjectOfType<AudioManager>().Pause("mainTheme");
     }
-
+    // Game Unpause State
     public void UnpausedGame()
     {
         e_gameStates = GameStates.GAME;
@@ -91,7 +91,7 @@ public class GameStateManager : MonoBehaviour {
         Time.timeScale = 1f;
         FindObjectOfType<AudioManager>().Unpause("mainTheme");
     }
-
+    // Game Over State
     internal void GameOver()
     {
         gameStates[1].SetActive(false);
@@ -99,7 +99,7 @@ public class GameStateManager : MonoBehaviour {
         FindObjectOfType<AudioManager>().Stop("mainTheme");
         FindObjectOfType<AudioManager>().Play("gameoverTheme");
     }
-
+    // Game Win State
     internal void GameWin()
     {
         gameStates[1].SetActive(false);
@@ -107,7 +107,7 @@ public class GameStateManager : MonoBehaviour {
         FindObjectOfType<AudioManager>().Stop("mainTheme");
 
     }
-
+    // Game Exit
     public void GameExit()
     {
         Application.Quit();
@@ -118,9 +118,10 @@ public class GameStateManager : MonoBehaviour {
     { SceneManager.LoadScene(0); }
 
 
+
+    // Switching between scenes based on ENUM
     private void ChangeGameStates()
     {
-
 
         switch (e_gameStates)
         {

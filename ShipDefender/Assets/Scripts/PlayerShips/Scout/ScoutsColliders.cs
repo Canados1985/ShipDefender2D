@@ -20,7 +20,7 @@ public class ScoutsColliders : MonoBehaviour {
         if ((collision.gameObject.name == "ufo1(Clone)" && this.gameObject.name == "scout1") || (collision.gameObject.name == "ufo2(Clone)" && this.gameObject.name == "scout1") || (collision.gameObject.name == "ufo3(Clone)" && this.gameObject.name == "scout1"))
 
         {
-            tempScout.b_IsAimed_Scout1 = true; // for shoting
+            tempScout.b_IsAimed_Scout1 = true; 
 
             tempScout.go_gunFire1.SetActive(true);
             tempScout.go_gunFire2.SetActive(true);
@@ -37,7 +37,7 @@ public class ScoutsColliders : MonoBehaviour {
 
         {
 
-            tempScout.b_IsAimed_Scout2 = true; // for shoting
+            tempScout.b_IsAimed_Scout2 = true; 
 
             tempScout.go_gunFire1.SetActive(true);
             tempScout.go_gunFire2.SetActive(true);
@@ -55,7 +55,7 @@ public class ScoutsColliders : MonoBehaviour {
 
         {
 
-            tempScout.b_IsAimed_Scout3 = true; // for shoting
+            tempScout.b_IsAimed_Scout3 = true; 
 
             tempScout.go_gunFire1.SetActive(true);
             tempScout.go_gunFire2.SetActive(true);

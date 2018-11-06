@@ -90,7 +90,7 @@ public class MainStation : MonoBehaviour {
     {
         f_mainStationEnergy = f_mainStationEnergy - 45;
     }
-
+    
     public void RepairPrice()
     {
         if (!b_baseLevel2Update && !b_baseLevel3Update)
